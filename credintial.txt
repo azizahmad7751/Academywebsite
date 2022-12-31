@@ -1,0 +1,50 @@
+(acadmey) C:\Users\Aziz Ahmad\acadmey
+
+admin:
+
+ahmad
+admin
+
+
+
+Problems:
+1)Get data from multiple django app models on single html page
+https://stackoverflow.com/questions/16135659/get-data-from-multiple-django-app-models-on-single-html-page
+
+Example:
+views.py
+
+def currentleaguestandings(request):
+    data = CurrentAlLeagueStandings.objects.all()
+    data2= CurrentNlLeagueStandings.objects.all()
+    return render(request, 'standings/league.html', {"data": data, "data2": data2})
+
+
+
+index.html
+<html>
+    <tr>
+        <th>Team Name</th>
+    </tr>
+
+    {% for standings in data %}
+    <tr>
+        <td>{{ standings.team }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+#table to display data from CurrentNlLeagueStandings
+<table>
+    <tr>
+        <th>Team Name</th>
+    </tr>
+    {% for standings in data2 %}
+    <tr>
+        <td>{{ standings.team }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

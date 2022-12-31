@@ -1,0 +1,333 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+
+    <!--================ Start Home Banner Area =================-->
+    <section class="home_banner_area">
+      <div class="banner_inner">
+        <div class="container">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-lg-6">
+              <div class="banner_content">
+                <h3>Hey There !</h3>
+                <h1 class="text-uppercase">ELum Acadmey</h1>
+                <h5 class="text-uppercase">Join Us and Learn Technology</h5>
+                <div class="social_icons my-5">
+                  <a href="https://twitter.com/sajib1066" target="_blank"><i class="ti-twitter"></i></a>
+                  <a href="https://join.skype.com/invite/frQeKWH37d6y" target="_blank"><i class="ti-skype"></i></a>
+                  <a href="https://www.facebook.com/sajib1066" target="_blank"><i class="ti-facebook"></i></a>
+                  <a href="https://github.com/sajib1066" target="_blank"><i class="ti-github"></i></a>
+                  <a href="https://www.linkedin.com/in/sajib1066/" target="_blank"><i class="ti-linkedin"></i></a>
+                  <a href="https://www.youtube.com/channel/UCsYH30yFN391zg-UUQ8BhTw" target="_blank"><i class="ti-youtube"></i></a>
+                </div>
+                <a class="primary_btn" href="{% url 'portfolio' %}"><span>See Our Work</span></a>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="home_right_img">
+                <img class="img-fluid" src="{% static 'img/banner/home-right.jpg' %}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================ End Home Banner Area =================-->
+
+    <!--================ Start Statistics Area =================-->
+    <section class="statistics_area">
+      <div class="container">
+        <div class="row justify-content-lg-start justify-content-center">
+          <div class="col-lg-2 col-md-3">
+            <div class="statistics_item">
+              <h3><span class="counter">2</span>k+</h3>
+              <p>Students</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3">
+            <div class="statistics_item">
+              <h3><span class="counter">5</span>k+</h3>
+              <p>Students Consulted</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3">
+            <div class="statistics_item">
+              <h3><span class="counter">9</span>/10</h3>
+              <p>Average Rating</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================ End Statistics Area =================-->
+
+    <!--================ Start About Us Area =================-->
+    <section class="about_area section_gap">
+      <div class="container">
+        <div class="row justify-content-start align-items-center">
+          <div class="col-lg-5">
+            <div class="about_img">
+              <img class="" src="{% static 'img/about-us.jpg' %}" alt="" height="450px">
+            </div>
+          </div>
+
+          <div class="offset-lg-1 col-lg-5">
+            <div class="main_title text-left">
+              <p class="top_text">About Us <span></span></p>
+              <h2>
+                Welcome to ELUM Academy <br>
+                
+              </h2>
+              <p>
+              ELUM ACADEMY is one of the most prestigious Training & Consulting firm. We are focused on increasing awareness of the critical importance of developing knowledge society, and upgrading knowledge-based competitiveness through stronger entrepreneurship, and supported by responsible governance. We are on a mission to enhance and support efforts to build knowledge economy as well as exchanging good practice, encouraging collaboration and implementing new knowledge into innovative products.
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================ End About Us Area =================-->
+
+    <!--================ Start Features Area =================-->
+    <section class="services_area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="main_title">
+              <p class="top_text">Our Courses <span></span></p>
+              <h2>Courses We <br>
+                Offer</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          {% if service %}
+            {% for service in service %}
+            
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+           
+
+            <div class="service_item">
+
+              
+              <img src="{{service.photo.url}}" alt="" height="350px" width="300px">
+              <h4>{{service.title}}</h4>
+             
+           
+           <div class="text-wrap">
+                  <p>{{service.content|safe|truncatewords:20 }}</p>
+                </div>
+            <a href="{% url 'services_details' service.id %}" class="primary_btn2 mt-35">Learn More</a>
+          </div>
+        </div>
+       {% endfor %}
+
+        {% else %}
+            <h2 class="text-danger">Courses Not Available!</h2>
+        {% endif %}
+        
+         </div>
+            
+          </div>
+
+         
+        </div>
+      </div>
+    </section>
+    <!--================ End Features Area =================-->
+
+
+    <!--================ Start Testimonial Area =================-->
+  <section class="testimonial_area pb-xl-300px">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="main_title">
+            <p class="top_text">Our Tesitmonial <span></span></p>
+            <h2>Honourable Students <br> </h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="owl-carousel owl-theme testimonial-slider ">
+        {% for students in students %}
+        <div class="testimonial-item">
+          
+          <div class="row">
+          
+            <div class="col-lg-6">
+                
+              <div class="testi-img mb-4 mb-lg-0">
+                
+                <img src="{{students.photo.url}}" alt="">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="testi-right">
+                <h4>{{students.name}}</h4>
+                <p><small>{{students.position}}</small></p>
+
+                <p>{{students.discription}} </p>
+               
+                <ul class="star_rating mt-4">
+                  <li><span><i class="fas fa-star"></i></span></li>
+                  <li><span><i class="fas fa-star"></i></span></li>
+                  <li><span><i class="fas fa-star"></i></span></li>
+                  <li><span><i class="fas fa-star"></i></span></li>
+                  <li class="disable"><span><i class="fas fa-star"></i></span></li>
+                </ul>
+
+              </div>
+               
+            </div>
+          
+          </div>
+
+        </div>
+{% endfor %}
+      </div>
+    </div>
+  </section>
+  
+    <!--================ End Testimonial Area =================-->
+
+
+
+
+    <!--================ Start Portfolio Area =================-->
+    <section class="portfolio_area" id="portfolio">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="main_title">
+              <p class="top_text">Our Portfolio <span></span></p>
+              <h2>Check Our Projects <br> </h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="filters portfolio-filter">
+          <ul>
+            <li class="active" data-filter="*">all</li>
+            {% for ctg in portfolio_category %}
+  					<li data-filter=".{{ ctg.name }}">{{ ctg.name }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="filters-content">
+          <div class="row portfolio-grid">
+            <div class="grid-sizer col-md-3 col-lg-3"></div>
+            {% if portfolio %}
+            {% for portfolio in portfolio %}
+            <div class="col-lg-6 col-md-6 all {{ portfolio.category }}">
+  						<div class="single_portfolio">
+  							<img class="img-fluid w-100" src="{{ portfolio.photo.url }}" alt="">
+  							<div class="overlay"></div>
+  							<div class="short_info">
+  								<h4><a href="{% url 'portfolio-details' portfolio.id %}">{{ portfolio.title }}</a></h4>
+  								<p>{{ portfolio.portfolio_type }}</p>
+  							</div>
+  						</div>
+  					</div>
+            {% endfor %}
+            {% else %}
+            <h2 class="text-danger">Portfolio Not Available!</h2>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================ End Portfolio Area =================-->
+
+    <!--================ Start Blog Area =================-->
+    <section class="blog-area section-gap">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="main_title">
+              <p class="top_text">Our blog <span></span></p>
+              <h2>Latest Story From <br>
+                Our Blog </h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          {% for post in post %}
+          <div class="col-lg-4 col-md-6">
+            <div class="single-blog">
+              <div class="thumb">
+                <img src="{{ post.photo.url }}" alt="post" height="310px" width="360px">
+              </div>
+              <div class="short_details">
+                <div class="meta-top d-flex">
+                  <a href="#"><i class="ti-user"></i>{{ post.author }}</a>
+                  <a href="#"><i class="ti-calendar"></i>{{ post.pub_date }}</a>
+                </div>
+                <a class="d-block" href="{% url 'blog-details' post.id %}">
+                  <h4>{{ post.title }}</h4>
+                </a>
+                <div class="text-wrap">
+                  <p>{{ post.content|safe|truncatewords:30 }}</p>
+                </div>
+                <a href="#" class="primary_btn2">Learn More</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <!--================ End Blog Area =================-->
+
+    <!--================ Start Brands Area =================-->
+    <section class="brands-area section_gap_bottom">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="owl-carousel brand-carousel">
+              <!-- single-brand -->
+              <div class="single-brand-item d-table">
+                <div class="d-table-cell">
+                  <img src="{% static 'img/brands/logo1.png' %}" alt="">
+                </div>
+              </div>
+              <!-- single-brand -->
+              <div class="single-brand-item d-table">
+                <div class="d-table-cell">
+                  <img src="{% static 'img/brands/logo2.png' %}" alt="">
+                </div>
+              </div>
+              <!-- single-brand -->
+              <div class="single-brand-item d-table">
+                <div class="d-table-cell">
+                  <img src="{% static 'img/brands/logo3.png' %}" alt="">
+                </div>
+              </div>
+              <!-- single-brand -->
+              <div class="single-brand-item d-table">
+                <div class="d-table-cell">
+                  <img src="{% static 'img/brands/logo4.png' %}" alt="">
+                </div>
+              </div>
+              <!-- single-brand -->
+              <div class="single-brand-item d-table">
+                <div class="d-table-cell">
+                  <img src="{% static 'img/brands/logo5.png' %}" alt="">
+                </div>
+              </div>
+              <!-- single-brand -->
+              <div class="single-brand-item d-table">
+                <div class="d-table-cell">
+                  <img src="{% static 'img/brands/logo3.png' %}" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================ End Brands Area =================-->
+{% endblock %}
