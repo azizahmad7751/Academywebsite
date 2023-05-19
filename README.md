@@ -10,3 +10,45 @@
 7. Create Super User `python manage.py createsuperuser`
 8. Finally Run The Project `python manage.py runserver`
 
+         +-------------------+
+         |    Portfolio      |
+         +-------------------+
+         |                   |
+         |   - title         |
+         |   - description   |
+         |   - courses       |
+         |                   |
+         +-------------------+
+                   |
+                   |
+         +-------------------+
+         |      Course       |
+         +-------------------+
+         |                   |
+         |   - title         |
+         |   - description   |
+         |   - instructor    |
+         |   - students      |
+         |                   |
+         +-------------------+
+                   |
+                   |
+         +-------------------+
+         |    Instructor     |
+         +-------------------+
+         |                   |
+         |   - name          |
+         |   - expertise     |
+         |   - courses       |
+         |                   |
+         +-------------------+
+                   |
+                   |
+         +-------------------+
+         |     Student       |
+         +-------------------+
+         |                   |
+         |   - name          |
+         |   - courses       |
+         |                   |
+         +-------------------+
